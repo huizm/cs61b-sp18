@@ -14,13 +14,33 @@ public class NBody {
 
         // draw the initial universe
         StdDraw.setScale(-radius, radius);
-        StdDraw.clear();
-        StdDraw.picture(.0, .0, "./images/starfield.jpg");
+        drawUniverse(planets);
 
-        // draw planets
-        for (Planet p: planets) {
-            p.draw();
+        // animation
+        StdDraw.enableDoubleBuffering();
+
+        int len = planets.length;
+        for (double time = 0; time <= T; time += dt) {
+            double[] xForces = new double[len];
+            double[] yForces = new double[len];
+            double xForce, yForce;
+
+            for (int i = 0; i < len; i++) {
+                xForce = planets[i].calcNetForceExertedByX(planets);
+                yForce = planets[i].calcNetForceExertedByY(planets);
+                xForces[i] = xForce;
+                yForces[i] = yForce;
+            }
+
+            for (int i = 0; i < len; i++) {
+                planets[i].update(dt, xForces[i], yForces[i]);
+            }
+
+            drawUniverse(planets);
+            StdDraw.show();
+            StdDraw.pause(10);
         }
+
     }
 
     public static double readRadius(String filename) {
@@ -50,5 +70,13 @@ public class NBody {
             planets[i] = pi;
         }
         return planets;
+    }
+
+    private static void drawUniverse(Planet[] planets) {
+        StdDraw.clear();
+        StdDraw.picture(.0, .0, "./images/starfield.jpg");
+        for (Planet p: planets) {
+            p.draw();
+        }
     }
 }

@@ -61,7 +61,7 @@ public class Planet {
                 netForceX += calcForceExertedByX(p);
             }
         }
-        return netForceX >= .0 ? netForceX : -netForceX;
+        return netForceX;
     }
 
     public double calcNetForceExertedByY(Planet[] ps) {
@@ -71,7 +71,7 @@ public class Planet {
                 netForceY += calcForceExertedByY(p);
             }
         }
-        return netForceY >= .0 ? netForceY : -netForceY;
+        return netForceY;
     }
 
     public void update(double time, double xForce, double yForce) {
