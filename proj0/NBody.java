@@ -41,6 +41,13 @@ public class NBody {
             StdDraw.pause(10);
         }
 
+        // print final state
+        StdOut.printf("%d\n", planets.length);
+        StdOut.printf("%.2e\n", radius);
+        for (Planet p: planets) {
+            StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
+                          p.xxPos, p.yyPos, p.xxVel, p.yyVel, p.mass, p.imgFileName);
+        }
     }
 
     public static double readRadius(String filename) {
