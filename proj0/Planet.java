@@ -1,4 +1,5 @@
 public class Planet {
+    
     public double xxPos;
     public double xxVel;
     public double yyPos;
@@ -91,5 +92,9 @@ public class Planet {
         this.yyVel = vy;
         this.xxPos = px;
         this.yyPos = py;
+    }
+
+    public void draw() {
+        StdDraw.picture(xxPos, yyPos, "./images/" + imgFileName);
     }
 }
