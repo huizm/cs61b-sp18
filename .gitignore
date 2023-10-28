@@ -48,3 +48,8 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 *.lnk
+
+# student added
+out/
+.idea/
+.vscode/
