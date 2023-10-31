@@ -2,16 +2,16 @@ public class LinkedListDeque<T> {
 
     private class Node {
 
-        public T item;
-        public Node prev, next;
+        private T item;
+        private Node prev, next;
 
-        public Node(T item) {
+        private Node(T item) {
             this.item = item;
             this.prev = null;
             this.next = null;
         }
 
-        public T getRecursiveHelper(int count) {
+        private T getRecursiveHelper(int count) {
             if (count == 0) {
                 return this.item;
             } else {
