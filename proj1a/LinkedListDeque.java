@@ -25,11 +25,11 @@ public class LinkedListDeque<T> {
 
     /** constructor of public class LinkedListDeque */
     public LinkedListDeque() {
-        Node sentinel = new Node(null);
-        sentinel.prev = sentinel;
-        sentinel.next = sentinel;
+        Node n = new Node(null);
+        n.prev = n;
+        n.next = n;
 
-        this.sentinel = sentinel;
+        this.sentinel = n;
         this.size = 0;
     }
     
