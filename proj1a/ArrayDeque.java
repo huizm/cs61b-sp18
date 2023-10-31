@@ -83,6 +83,10 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
+        if (this.size == 0) {
+            return null;
+        }
+
         T item = this.array[this.front];
         this.front = (this.front + 1) % this.cap;
         this.size--;
@@ -95,6 +99,10 @@ public class ArrayDeque<T> {
     }
 
     public T removeLast() {
+        if (this.size == 0) {
+            return null;
+        }
+        
         this.front = (this.front + this.cap - 1) % this.cap;
         T item = this.array[this.rear];
         this.size--;
