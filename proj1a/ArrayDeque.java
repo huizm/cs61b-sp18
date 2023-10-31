@@ -91,7 +91,7 @@ public class ArrayDeque<T> {
         this.front = (this.front + 1) % this.cap;
         this.size--;
 
-        if (this.size <= this.cap / 4) {
+        if (this.cap >= 16 && this.size <= this.cap / 4) {
             halveArrayCap();
         }
         
@@ -102,12 +102,12 @@ public class ArrayDeque<T> {
         if (this.size == 0) {
             return null;
         }
-        
-        this.front = (this.front + this.cap - 1) % this.cap;
+
+        this.rear = (this.rear + this.cap - 1) % this.cap;
         T item = this.array[this.rear];
         this.size--;
 
-        if (this.size <= this.cap / 4) {
+        if (this.cap >= 16 && this.size <= this.cap / 4) {
             halveArrayCap();
         }
 
