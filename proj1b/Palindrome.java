@@ -13,6 +13,25 @@ public class Palindrome {
         return deque;
     }
 
+    /** use character comparator provided by user */
+    public boolean isPalindrome(String word, CharacterComparator cc) {
+        Deque<Character> deque = this.wordToDeque(word);
+        return isPalindromeHelper(deque, cc);
+    }
+
+    /** use character comparator provided by user */
+    private boolean isPalindromeHelper(Deque<Character> d, CharacterComparator cc) {
+        if (d.size() <= 1) {
+            return true;
+        }
+
+        if (!cc.equalChars(d.removeFirst(), d.removeLast())) {
+            return false;
+        } else {
+            return isPalindromeHelper(d, cc);
+        }
+    }
+
     public boolean isPalindrome(String word) {
         Deque<Character> deque = this.wordToDeque(word);
         return isPalindromeHelper(deque);
