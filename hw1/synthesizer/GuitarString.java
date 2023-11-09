@@ -56,7 +56,12 @@ public class GuitarString {
     /* Return the double at the front of the buffer. */
     public double sample() {
         // Return the correct thing.
-
-        return this.buffer.peek();
+        double s;
+        try {
+            s = this.buffer.peek();
+        } catch (RuntimeException e) {
+            s = .0;
+        }
+        return s;
     }
 }
