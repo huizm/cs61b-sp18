@@ -79,13 +79,13 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
 
         @Override
         public boolean hasNext() {
-            return (this.current + capacity - first) % capacity < fillCount;
+            return this.current - first < fillCount;
         }
 
         @Override
         public T next() {
             T item = rb[this.current];
-            this.current = (this.current + 1) % capacity;
+            this.current++;
             return item;
         }
     }
