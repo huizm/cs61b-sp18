@@ -42,4 +42,28 @@ public class TestArrayRingBuffer {
             assertEquals(i++, x);
         }
     }
+
+    @Test
+    public void isEmptyTest() {
+        ArrayRingBuffer<Integer> arb = new ArrayRingBuffer<Integer>(5);
+        arb.enqueue(0);
+        assertFalse(arb.isEmpty());
+        arb.dequeue();
+        assertTrue(arb.isEmpty());
+    }
+
+    @Test
+    public void peekTest() {
+        ArrayRingBuffer<Integer> arb = new ArrayRingBuffer<Integer>(5);
+        arb.enqueue(0);
+
+        int testPeek = arb.peek();
+        assertEquals(0L, testPeek);
+        arb.dequeue();
+        try {
+            arb.peek();
+        } catch (RuntimeException e) {
+            // do nothing
+        }
+    }
 } 
